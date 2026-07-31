@@ -14,6 +14,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 @Configuration
 public class SecurityConfig {
@@ -37,20 +38,25 @@ public class SecurityConfig {
                         cors -> cors.configurationSource(corsConfigurationSource())
                 ).build();
     }
-}
 
-private CorsConfigurationSource corsConfigurationSource(){
-    return new CorsConfigurationSource() {
-        @Override
-        public @Nullable CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
-            CorsConfiguration cfg = new CorsConfiguration();
-            cfg.setAllowedOrigins(
-                    Arrays.asList(
-                            "http://localhost:8080/"
-                    )
-            );
-            cfg.setAllowedMethods();
-            return null;
-        }
+
+    private CorsConfigurationSource corsConfigurationSource(){
+        return new CorsConfigurationSource() {
+            @Override
+            public @Nullable CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+                CorsConfiguration cfg = new CorsConfiguration();
+                cfg.setAllowedOrigins(
+                        Arrays.asList(
+                                "http://localhost:8080/"
+                        )
+                );
+                cfg.setAllowedMethods(Collections.singletonList("*"));
+                cfg.setAllowCredentials(true);
+                cfg.setAllowedHeaders(Collections.singletonList("*"));
+                cfg.setExposedHeaders(Arrays.asList("Authorization"));
+                cfg.setMaxAge(3600L);
+                return cfg;
+            }
+        };
     }
 }
