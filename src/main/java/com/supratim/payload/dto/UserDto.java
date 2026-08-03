@@ -1,6 +1,6 @@
 package com.supratim.payload.dto;
 
-import com.supratim.domain.UsereRole;
+import com.supratim.domain.UserRole;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -16,7 +16,7 @@ public class UserDto {
 
     private String phone;
 
-    private UsereRole role;
+    private UserRole role;
 
     private String password;
 

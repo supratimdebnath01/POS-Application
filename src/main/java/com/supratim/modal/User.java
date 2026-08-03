@@ -1,7 +1,7 @@
 package com.supratim.modal;
 
 
-import com.supratim.domain.UsereRole;
+import com.supratim.domain.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
@@ -28,14 +28,14 @@ public class User {
     @Email(message = "Email should be valid")
     private String email;
 
-    @ManyToMany
+    @ManyToOne
     private Store store;
 
 
     private String phone;
 
     @Column(nullable = false)
-    private UsereRole role;
+    private UserRole role;
 
     @Column(nullable = false)
     private String password;

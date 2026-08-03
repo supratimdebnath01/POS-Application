@@ -1,7 +1,7 @@
 package com.supratim.service.impl;
 
 import com.supratim.configuration.JwtProvider;
-import com.supratim.domain.UsereRole;
+import com.supratim.domain.UserRole;
 import com.supratim.exceptions.UserException;
 import com.supratim.mapper.UserMapper;
 import com.supratim.modal.User;
@@ -39,7 +39,7 @@ public class AuthServiceImpl implements AuthService {
         if (user != null) {
             throw new UserException("Email ID already registered !");
         }
-        if (userDto.getRole().equals(UsereRole.ROLE_ADMIN)){
+        if (userDto.getRole().equals(UserRole.ROLE_ADMIN)){
             throw new UserException("Role admin is not allowed !");
         }
 
