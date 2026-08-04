@@ -1,5 +1,6 @@
 package com.supratim.mapper;
 
+import com.supratim.modal.Category;
 import com.supratim.modal.Product;
 import com.supratim.modal.Store;
 import com.supratim.payload.dto.ProductDTO;
@@ -15,17 +16,23 @@ public class ProductMapper {
                 .mrp(product.getMrp())
                 .sellingPrice(product.getSellingPrice())
                 .brand(product.getBrand())
+                .category(CategoryMapper.toDTO(product.getCategory()))
                 .storeId(product.getStore()!=null?product.getStore().getId():null)
                 .image(product.getImage())
                 .createdAt(product.getCreatedAt())
                 .updatedAt(product.getUpdatedAt())
                 .build();
 
+
     }
 
-    public static Product toEntity(ProductDTO productDTO, Store store) {
+    public static Product toEntity(ProductDTO productDTO,
+                                   Store store,
+                                   Category category) {
         return Product.builder()
                 .name(productDTO.getName())
+                .store(store)
+                .category(category)
                 .sku(productDTO.getSku())
                 .description(productDTO.getDescription())
                 .mrp(productDTO.getMrp())

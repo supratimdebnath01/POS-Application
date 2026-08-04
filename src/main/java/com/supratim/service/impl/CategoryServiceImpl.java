@@ -12,7 +12,6 @@ import com.supratim.repository.StoreRepository;
 import com.supratim.service.CategoryService;
 import com.supratim.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.domain.AbstractAuditable_;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,7 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
     private final StoreRepository storeRepository;
 
     @Override
-    public CategoryDTO createCatgory(CategoryDTO dto) throws Exception {
+    public CategoryDTO createCategory(CategoryDTO dto) throws Exception {
         User user = userService.getCurrentUser();
 
         Store store = storeRepository.findById(dto.getStoreId()).orElseThrow(
@@ -56,7 +55,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public CategoryDTO updateCatgory(Long id, CategoryDTO dto) throws Exception {
+    public CategoryDTO updateCategory(Long id, CategoryDTO dto) throws Exception {
         Category category = categoryRepository.findById(id).orElseThrow(
                 ()-> new Exception("Category not exist")
         );
@@ -68,7 +67,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void deleteCatgory(Long id) throws Exception {
+    public void deleteCategory(Long id) throws Exception {
         Category category = categoryRepository.findById(id).orElseThrow(
                 ()-> new Exception("Category not exist")
         );

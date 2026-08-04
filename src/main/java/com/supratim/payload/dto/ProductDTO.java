@@ -1,5 +1,6 @@
 package com.supratim.payload.dto;
 
+import com.supratim.modal.Category;
 import lombok.Builder;
 import lombok.Data;
 
@@ -25,7 +26,7 @@ public class ProductDTO {
     private String brand;
     private String image;
 
-//    private Category category;
+    private CategoryDTO category;
 
     private Long categoryId;
 

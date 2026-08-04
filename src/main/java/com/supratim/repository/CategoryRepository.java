@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    List<Category> findByStoreId(Long id);
+    List<Category> findByStoreId(long storeId);
 }
