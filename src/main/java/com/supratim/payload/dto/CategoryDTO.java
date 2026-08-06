@@ -1,12 +1,15 @@
 package com.supratim.payload.dto;
 
-import com.supratim.modal.Store;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Data
 @Builder
+
 public class CategoryDTO {
 
 

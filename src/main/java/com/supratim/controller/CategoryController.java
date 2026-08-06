@@ -40,7 +40,7 @@ public class CategoryController {
             @RequestBody CategoryDTO categoryDTO,
             @PathVariable Long id) throws Exception {
         return ResponseEntity.ok(
-                categoryService.updateCategory(id, categoryDTO)
+                categoryService.updateCategory(id,categoryDTO)
         );
 
     }

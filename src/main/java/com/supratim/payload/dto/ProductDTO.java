@@ -1,8 +1,8 @@
 package com.supratim.payload.dto;
 
-import com.supratim.modal.Category;
-import lombok.Builder;
-import lombok.Data;
+
+import lombok.*;
+
 
 import java.time.LocalDateTime;
 
@@ -35,4 +35,6 @@ public class ProductDTO {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+
 }
