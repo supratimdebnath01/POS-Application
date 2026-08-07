@@ -1,6 +1,7 @@
 package com.supratim.payload.dto;
 
 
+import com.supratim.domain.PaymentType;
 import com.supratim.modal.Customer;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,7 @@ public class OrderDTO {
 
     private LocalDateTime createdAt;
 
-    private Long BranchId;
+    private Long branchId;
 
     private Long customerId;
 
@@ -29,6 +30,8 @@ public class OrderDTO {
 
 
     private Customer customer;
+
+    private PaymentType paymentType;
 
     private List<OrderItemDTO> items;
 }

@@ -47,6 +47,7 @@ public class Product {
     protected void onCreate() {
         createdAt = LocalDateTime.now();
     }
+
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();

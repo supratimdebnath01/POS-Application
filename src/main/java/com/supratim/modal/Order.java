@@ -1,6 +1,8 @@
 package com.supratim.modal;
 
 
+import com.razorpay.Payment;
+import com.supratim.domain.PaymentType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,4 +37,12 @@ public class Order {
 
     @OneToMany
     private List<OrderItem> items;
+
+    private PaymentType paymentType;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
+
 }

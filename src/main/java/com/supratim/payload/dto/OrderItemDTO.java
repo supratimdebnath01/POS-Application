@@ -14,8 +14,10 @@ public class OrderItemDTO {
 
     private Double price;
 
-    @ManyToOne
+
     private ProductDTO product;
+
+    private Long productId;
 
     private Long orderId;
 }
