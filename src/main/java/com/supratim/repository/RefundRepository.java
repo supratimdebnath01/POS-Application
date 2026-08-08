@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface RefundRepository extends JpaRepository<Refund, Long> {
 
-    List<Refund> findByCashierAndCreatedAtBetween(
-            User cashier,
+    List<Refund> findByCashierIdAndCreatedAtBetween(
+            Long cashier,
             LocalDateTime from,
             LocalDateTime to
     );

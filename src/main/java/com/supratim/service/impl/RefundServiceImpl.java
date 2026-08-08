@@ -55,32 +55,44 @@ public class RefundServiceImpl implements RefundService {
     }
 
     @Override
-    public RefundDTO getRefundByCashier(Long cashierId) throws Exception {
-        return null;
+    public List<RefundDTO> getRefundByCashier(Long cashierId) throws Exception {
+        return refundRepository.findByCashierId(cashierId).stream()
+                .map(RefundMapper::toDTO).collect(Collectors.toList());
     }
 
     @Override
-    public RefundDTO getRefundByShiftReport(Long shiftReportId) throws Exception {
-        return null;
+    public List<RefundDTO> getRefundByShiftReport(Long shiftReportId) throws Exception {
+        return refundRepository.findByShiftReportId(shiftReportId).stream()
+                .map(RefundMapper::toDTO).collect(Collectors.toList());
     }
 
     @Override
-    public List<RefundDTO> getRefundByCashierAndDateRange(Long cashierId, LocalDateTime startDate, LocalDateTime endDate) throws Exception {
-        return List.of();
+    public List<RefundDTO> getRefundByCashierAndDateRange(Long cashierId,
+                                                          LocalDateTime startDate,
+                                                          LocalDateTime endDate) throws Exception {
+        return refundRepository.findByCashierIdAndCreatedAtBetween(
+                cashierId, startDate,endDate
+        ).stream().map(RefundMapper::toDTO).collect(Collectors.toList());
     }
 
     @Override
     public List<RefundDTO> getRefundByBranch(Long branchId) throws Exception {
-        return List.of();
+        return refundRepository.findByBranchId(branchId).stream()
+                .map(RefundMapper::toDTO).collect(Collectors.toList());
     }
 
     @Override
     public RefundDTO getRefundById(Long refundId) throws Exception {
-        return null;
+        return refundRepository.findById(refundId)
+                .map(RefundMapper::toDTO).orElseThrow(
+                        () -> new Exception("Refund Not Found")
+                );
     }
 
     @Override
     public void deleteRefund(Long refundId) throws Exception {
+        this.getRefundById(refundId);
+        refundRepository.deleteById(refundId);
 
     }
 }
