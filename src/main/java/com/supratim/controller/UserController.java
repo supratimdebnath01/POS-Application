@@ -10,14 +10,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/profile")
+    @GetMapping("/api/users/profile")
     public ResponseEntity<UserDto> getUserProfile(
             @RequestHeader("Authorization") String jwt
     ) throws UserException {
@@ -25,13 +26,20 @@ public class UserController {
        return ResponseEntity.ok(UserMapper.toDTO(user));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/users/{id}")
     public ResponseEntity<UserDto> getUserById(
             @RequestHeader("Authorization") String jwt,
             @PathVariable Long id
     ) throws UserException, Exception {
         User user =userService.getUserById(id);
         return ResponseEntity.ok(UserMapper.toDTO(user));
+    }
+
+    @GetMapping("users/list")
+    public ResponseEntity<List<User>> getUserList(
+    ) throws UserException, Exception {
+        List<User> users =userService.getAllUsers();
+        return ResponseEntity.ok(users);
     }
 
 
